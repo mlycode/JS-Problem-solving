@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multiple Pointers Pattern</title>
+    <script type="text/javascript" src="multiple-pointers.js"></script>
+</head>
+
+<body>
+
+    <h1>Multiple Pointers Pattern - Open the Console</h1>
+    <p>
+        Create <strong>pointers</strong> or values that correspond to an index position and move towards the beginning,
+        end or middle based on certain conditions.
+    </p>
+
+    <h3>Example</h3>
+    <p>
+        Write a function called <strong>sumZero</strong> which accepts a sorted array of integers. It should find the
+        first pair where the sum is 0. Return the array that includes both values that sum to zero or undefined if a
+        pair does not exist.
+    </p>
+    <p>
+        sumZero([-3,-2,-1,0,1,2,3]) // [-3, 3]
+    </p>
+    <p>
+        sumZero([-2,0,1,3]) // undefined
+    </p>
+    <p>To run the code in the console:</p>
+    <ul>
+        <li>
+            sumZeroNaive(arr)
+            <ul>
+                <li>
+                    Uses a nested loop which results in O(n^2) time complexity - time taken to complete task increases
+                    exponentially with the number of array elements, n
+                </li>
+            </ul>
+        </li>
+        <li>
+            sumZeroRefactor(arr)
+            <ul>
+                <li>
+                    Does not use nested loops; has a time complexity of O(n)
+                </li>
+                <li>
+                    Uses two pointers, one from the left at index 0 and another from the right at index arr.length - 1. Evaluates the sum and moves the pointer when sum !== 0
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3>
+        Exercise
+    </h3>
+    <p>Implement a function called <strong>countUniqueValues</strong>, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it must be sorted.</p>
+    <p>countUniqueValues([1,1,1,1,2]) // 2</p>
+</body>
+
+</html>
