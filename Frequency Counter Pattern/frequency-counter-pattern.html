@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frequency Counter Pattern</title>
+        <script type="text/javascript" src="frequency-counter-pattern.js"></script>
+    </head>
+    
+    <body>
+    <h1>
+        Frequency Counter Pattern - Open the Console
+    </h1>
+    <ul>
+        <li>
+            Uses objects or sets to collect values/frequencies of values
+        </li>
+        <li>
+            can often avoid the need for nested loops with arrays/strings O(n^2) operations
+        </li>
+    </ul>
+    <h3>Example</h3>
+    <p>
+        Write a function called <strong>same</strong>, which accepts two arrays. Function should return true if every value in the first array has it's corresponding value squared in the second array. Frequency of values must be the same.
+    </p>
+    <p>
+        same([1,2,3]), [4,1,9] // true
+    </p>
+    <p>
+        same([1,1,3]), [1,9,9] // false (must be same frequency)
+    </p>
+    <p>To run code in console:</p>
+    <ul>
+        <li>sameNaive(array1, array2)</li>
+        <ul>
+            <li>Solution has a nested loop, results in a time complexity of O(n^2) which is not ideal</li>
+        </ul>
+        <li>sameRefactor(array1, array2)</li>
+        <ul>
+            <li>
+                Solution has non-nested loops, results in time complexit of O(n), better than nested loops
+            </li>
+        </ul>
+    </ul>
+    <h3>Exercise</h3>
+    <p>
+        Given two strings, write a function to determine if the second string is an anagram of the first. Solve without using a nested loop (O(n) time complexity).
+    </p>
+    <p>To run code in console:</p>
+    <ul>
+        <li>
+            validAnagram(string1, string2)
+        </li>
+    </ul>
+    </body>
+</html>
