@@ -1,0 +1,26 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sum range Recursive Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="sumrange.js"></script>
+</head>
+<body>
+    <h1>Sum range Recursive Code</h1>
+    <h3>
+        Recursive Code
+    </h3>
+    <p>
+        Definition: Code which executes itself. Continuosly pushes functions onto the call stack to be executed until the <strong>Base Case</strong> is reached. Each time the recursive code is called, a different input is used.
+    </p>
+    <h3>Code</h3>
+    <p>run sumRange(num) in the console</p>
+    <ul>
+        <li>sumRange(3) returns: return 3 + sumRange(2) (first return is now waiting for sumRange(2) to execute on the call stack)</li>
+        <li>sumRange(2) returns: return 2 + sumRange(1) (now sumRange(2) is waiting for sumRange(1))</li>
+        <li>Once sumRange(1) returns 1, sumRange(2) returns 2 + 1, and finally sumRange(3) returns 3 + 2 + 1). Returning 1 is the base case</li>
+    </ul>
+</body>
+</html>
