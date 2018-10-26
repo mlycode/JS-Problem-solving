@@ -1,0 +1,34 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quick Sort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="quick-sort.js"></script>
+</head>
+<body>
+    <h1>Quick Sort Algorithm</h1>
+    <ul>
+        <li>Also exploits the fact that arrays of 0 or 1 element are always sorted</li>
+        <li>Selects one element (called the pivot) and finds the index where the pivot should end up (everything lower than pivot moves to the left...)</li>
+        <li>Quick sort then applied on either side of the pivot (once the pivot is positioned correctly)</li>
+    </ul>
+    <h3>Code</h3>
+    <p>Run quickSort([arr]) in the console to sort an array of numbers</p>
+    <ul>
+        <li>
+            Code picks the first element in the array and compares it to the other elements. Each time an element is smaller than the pivot, a pivotIndex variable is incremented, and the pivotIndex value is swapped with the current value (in the loop). Each loop returns the pivotIndex
+        </li>
+        <li>
+            The pivot swap code is executed recursively until the element size reaches 1, which finally returns the sorted array
+        </li>
+        <li>
+            Best and worst case time complexity is O(nlogn) due to logn decompositions of the initial array. Again, O(n) comes from the n amount of comparisons (like merge sort)
+        </li>
+        <li>
+            The worst case (taking the first element in the array) has O(n^2) time complexity. An already sorted array results in O(n) decompositions and O(n) comparisons. Occurs because of pivoting at the first array element. Can be improved by picking a random or middle element.
+        </li>
+    </ul>
+</body>
+</html>
