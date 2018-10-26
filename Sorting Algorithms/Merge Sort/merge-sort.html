@@ -1,0 +1,48 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Merge Sort Algorithm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="merge-sort.js"></script>
+</head>
+<body>
+    <h1>Merge Sort Algorithm</h1>
+    <h3>Merge, Quick and Radix Sort?</h3>
+    <ul>
+        <li>
+            Bubble, Selection and Insertion Sort don't scale well (take longer for larger arrays) - These have quadratic time complexity
+        </li>
+        <li>
+            Merge, Quick and Radix Sort improve the time complexity to O(nlogn), which is better than quadratic
+        </li>
+    </ul>
+    <h3>Merge Sort</h3>
+    <p>Overview:</p>
+    <ul>
+        <li>A combination of merging and sorting</li>
+        <li>Exploits the fact that arrays of 0 or 1 element are always sorted</li>
+        <li>Works by decomposing an array into smaller arrays of 0 or 1 elements, then building up a sorted array by merging the smaller arrays in sorted order</li>
+        <ul>
+            <li>The single element arrays are sorted, making merging the sorted arrays easier than an unsorted array</li>
+        </ul>
+    </ul>
+    <h3>Code</h3>
+    <p>Run mergeSort([array of unsorted values]) in the console</p>
+    <ul>
+        <li>Uses recursive code that splits the array into single element arrays before merging the arrays in sorted order</li>
+        <li>
+            Has O(n) Space Complexity
+        </li>
+        <li>
+            Has O(nlogn) Time complexity
+            <ul>
+                <li>
+                    O(logn) from splitting the array (number of decompositions), O(n) from comparing with the merge function resulting in O(nlogn)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
