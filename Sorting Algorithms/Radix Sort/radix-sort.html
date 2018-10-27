@@ -1,0 +1,50 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Radix Sort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="radix-sort.js"></script>
+</head>
+<body>
+    <h1>
+        Radix Sort Algorithm
+    </h1>
+    <p>Overview:</p>
+    <ul>
+        <li>
+            Radix sort is NOT a comparison sorting algorithm (which, in general, have O(n^2) or O(nlogn) time complexity)
+        </li>
+        <li>
+            Radix sort does not compare values within an array of numbers to each other, instead it does something else. This improves the time complexity
+        </li>
+        <li>
+            Considering an array of numbers, each number is sorted into buckets starting from units, tens, hundreds etc. for each loop i.e. if the largest number is 10 digits, the loop occurs 10 times
+        </li>
+        <li>
+            Radix sort exploits the fact the size of a number is encoded in the number of digits - a larger number has more digits than a smaller number
+        </li>
+        <li>
+            When working in base 10, there are 10 buckets; 2 buckets for base 2 etc. Only works for sorting numbers
+        </li>
+    </ul>
+    <h3>Code</h3>
+    <p>Run radixSort(nums) in the console to sort an array of numbers</p>
+    <ul>
+        <li>Consists of three helper functions; One gets the digit of the 'ith' number i.e. the unit or the ten etc.</li>
+        <li>Another finds the maximum number length within an array of numbers by using a function that determines the length of a number</li>
+        <li>radixSort loops through the array, sorting each number into an array/bucket; done by pushing the value of an 'ith' number into that index of a bucket array</li>
+        <li>after each internal loop, the number array is concated and repeated until the array is sorted</li>
+    </ul>
+    <h3>Space and Time complexity</h3>
+    <ul>
+        <li>
+            Time complexity of O(nk) - number is the number of integers and k is the length of the numbers/amount of digits
+        </li>
+        <li>
+            Space complexity of O(n + k)
+        </li>
+    </ul>
+</body>
+</html>
