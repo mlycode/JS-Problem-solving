@@ -1,0 +1,134 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Singly Linked Lists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="singly-linked-lists.js"></script>
+</head>
+<body>
+    <h1>Singly Linked Lists</h1>
+    <h3>Overview</h3>
+    <h4>What is a Linked List?</h4>
+    <ul>
+        <li>A data structure that contains a head, tail and length property</li>
+        <li>Linked lists consist of nodes</li>
+        <li>Each node has a value and a pointer/reference to the next node or null (for the final node there is no other node to reference, hence null)</li>
+        <li>To search through the list, each node starting form the head has to be passed through (due to node referencing starting from the head)</li>
+    </ul>
+    <h4>Lists vs. Arrays</h4>
+    <p>Lists</p>
+    <ul>
+        <li>Do not have indices</li>
+        <li>Instead, connected via nodes with a <strong>next</strong> pointer</li>
+        <li>This means, Random access is not allowed</li>
+        <li>To add to a linked lists, much simpler than arrays, only have to adjust the next pointer</li>
+    </ul>
+    <p>Arrays</p>
+    <ul>
+        <li>Indexed in order</li>
+        <li>Makes insertion and deletion expensive at times (inserting an element at start of array means every element after has to be re-indexed)</li>
+        <li>Because elements are indexed, data can be accessed at a specific index (random access is allowed)</li>
+    </ul>
+    <h3>Code</h3>
+    <script src="https://gist.github.com/mlycode/7eb8c07e3de4a7a00b84c44c111d133e.js"></script>
+    <h4>Creating a Node and the Singly Linked List class with .push() method</h4>
+    <ul>
+        <li>
+            Node class creates a node that takes a value
+        </li>
+        <li>
+            The Singly linked list has properties of head, tail and length
+        </li>
+        <li>
+            The instance method .push(val) takes a value to be pushed onto the end of the singly linked list;
+        </li>
+        <li>
+            When the list is empty, a new Node class is created with val, and assigns the lists head and tail to the newNode
+        </li>
+        <li>
+            When a new node is added to the list, the previous newNode has its tail set to the next newNode, and the tail is reassigned
+        </li>
+    </ul>
+    <h4>Creating a .pop() method - removes the tail from the list and returns it</h4>
+    <ul>
+        <li>
+            To remove the tail, a new tail has to be reassigned by going through the entire list again
+        </li>
+        <li>
+            The second to last element has its this.next property set to null, then the last element is return and removed from the list
+        </li>
+    </ul>
+    <script src="https://gist.github.com/mlycode/d0000c60e6095f4b8d00c159067ad64a.js"></script>
+    <ul>
+        <li>
+            For the edge case of an empty list, undefined is returned
+        </li>
+        <li>
+            Variables current keeps track of the current list item in the while loop, and newTail keeps track of the second to last (current - 1) list item
+        </li>
+        <li>
+            The tail is then reassigned as newTail and the .next property of newTail is set to null
+        </li>
+        <li>
+            The length property is decremented and current is returned
+        </li>
+    </ul>
+    <h4>Creating the .shift() mehtod - removes a node from the beginning of the list</h4>
+    <script src="https://gist.github.com/mlycode/563508db033cba9fb7324a44d9975061.js"></script>
+    <ul>
+        <li>Deals with case of empty list by returning undifined</li>
+        <li>Stores the current head value in the oldHead variable</li>
+        <li>Assigns the this.head property to oldHead.next (the new head after oldHead)</li>
+        <li>The length decremented and the old head is returned</li>
+    </ul>
+    <h4>Creating the .unshift() method - adds a node at the beginning of the list</h4>
+    <script src="https://gist.github.com/mlycode/b5b779bb8bf2094ff3926e2ba7c4d55c.js"></script>
+    <ul>
+        <li>Creates a new node with variable name newHead</li>
+        <li>if the list is empty, the newHead is assigned as the head and tail</li>
+        <li>otherwise, newHead's next property is assigned to the current head (this.head)</li>
+        <li>the head property is then set as newHead, and the length is incremented</li>
+    </ul>
+    <h4>Creating the .get(index) method - retrieve a node by it's position in the list</h4>
+    <script src="https://gist.github.com/mlycode/b5083cedfba718c50ac17fac6e40c316.js"></script>
+    <ul>
+        <li>
+            Takes an argument, index, which is used to loop through the list and find the node's value at that index
+        </li>
+        <li>When the count variable is not equal to the index, the count is incremented and the current variable is set to the next node</li>
+    </ul>
+    <h4>Creating the .set(index, value) method - changes the value of a node depending on its position in the list</h4>
+    <script src="https://gist.github.com/mlycode/c80394af0acc9e044c96111511fcadc4.js"></script>
+    <ul>
+        <li>Uses the get function to find a specific node</li>
+        <li>Sets the value property of the found node to the passed in value argument</li>
+        <li>If the node is found and changed, true is returned, else false is returned</li>
+    </ul>
+    <h4>Creating the .insert(index, value) method - adds a node at a specified position within the linked list</h4>
+    <script src="https://gist.github.com/mlycode/e46d0f45604a0a5fa07067af9aee48a6.js"></script>
+    <ul>
+        <li>If the index is less than zero or greater than the list length, false is returned</li>
+        <li>When the index is the same as the length, the .push() methods is used, and when the index is 0 the .unshift method is used. The !! is used to convert a truethy to boolean</li>
+        <li>The get method is used to access the value of the node before the index to insert at (prevIndex)</li>
+        <li>When the .next property is changed on prevIndex, the next property linking the rest of the list is lost</li>
+        <li>Therefore, a temp variable holds the old .next value for prevIndex, so the inserted node can then point to it correctly</li>
+    </ul>
+    <h4>Creating the .remove(index) method - removes a node from a specific position</h4>
+    <script src="https://gist.github.com/mlycode/733b96eb05578059f3bbf055f3d33f86.js"></script>
+    <ul>
+        <li>
+            calls existing pop and shift methods for when index = length - 1 or 0
+        </li>
+        <li>Sets the previous node (before the index to be removed) .next property to the .next of the index to be removed, then decrements the length of the list</li>
+    </ul>
+    <h4>Creating the reverse() method - reverses the order of the list in place without creating a copy</h4>
+    <ul>
+        <li>Starting form the head, reassign it as the tail and swap the .next property of the list</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
