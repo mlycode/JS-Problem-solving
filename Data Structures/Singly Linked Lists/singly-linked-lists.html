@@ -10,6 +10,10 @@
 <body>
     <h1>Singly Linked Lists</h1>
     <h3>Overview</h3>
+    <ul>
+        <li>Singly linked lists are a good alternative to arrays when insertion and deletion at the beginning are frequently required</li>
+        <li>Arrays contain a built in index, lists do not. Pointers between nodes is how nodes are referenced</li>
+    </ul>
     <h4>What is a Linked List?</h4>
     <ul>
         <li>A data structure that contains a head, tail and length property</li>
@@ -124,11 +128,21 @@
         <li>Sets the previous node (before the index to be removed) .next property to the .next of the index to be removed, then decrements the length of the list</li>
     </ul>
     <h4>Creating the reverse() method - reverses the order of the list in place without creating a copy</h4>
+    <script src="https://gist.github.com/mlycode/4f57b807e794981b27d98f2e38ca5934.js"></script>
     <ul>
-        <li>Starting form the head, reassign it as the tail and swap the .next property of the list</li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Swap the head and tail values, storing the current head value in the node variable</li>
+        <li>Have two variables defining the previous node and next node</li>
+        <li>Loop through the list, each time assign the next node as the current nodes .next property</li>
+        <li>Then assign the current nodes .next property to previous node</li>
+        <li>Then assign previous node to the current node (moving it to the start of the list)</li>
+        <li>Finally, current node to the next node</li>
+    </ul>
+    <h3>Big O Time Complexity</h3>
+    <ul>
+        <li>Insertion - O(1) - Takes the same amount of time to add to the list, independent of location (unlike arrays)</li>
+        <li>Removal - either O(1) or O(n) - removing from the beginning is easy (reassign the head) but removing from the end the second to last item has to be found (by going through the list)</li>
+        <li>Searching - O(n) - each node has to be checked</li>
+        <li>Access - O(n) - Random access isn't possible, each node has to be passed through until the desired node is reached (due to how each node points to the next)</li>
     </ul>
 </body>
 </html>

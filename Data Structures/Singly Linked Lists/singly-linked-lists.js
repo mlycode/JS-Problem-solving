@@ -106,11 +106,27 @@ class SinglyLinkedList {
         return removeNode;
     }
     reverse () {
-        this.head = this.tail;
-        let next;
-        let prev;
         let node = this.head;
-        while ()
+        this.head = this.tail;
+        this.tail = node;
+        let prevNode = null;
+        let nextNode = null;
+        for (let i = 0; i < this.length; i++) {
+            nextNode = node.next;
+            node.next = prevNode;
+            prevNode = node;
+            node = nextNode;
+        }
+        return this;
+    }
+    print () {
+        let arr = [];
+        let current = this.head;
+        while (current) {
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
     }
 }
 
