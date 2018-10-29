@@ -1,0 +1,82 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Doubly Linked Lists</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="dll.js"></script>
+</head>
+<body>
+    <h1>Doubly Linked Lists - Data Stuctures</h1>
+    <h3>Overview</h3>
+    <ul>
+        <li>Like a singly linked list, but every node points to both the next <strong>and</strong> previous node</li>
+        <li>More flexibility but also uses more memory (two points instead of one)</li>
+    </ul>
+    <h3>Code</h3>
+    <h4>Creating the Node and Doubly linked list classes</h4>
+    <script src="https://gist.github.com/mlycode/4934e28d6d62c8f8426c8cd3bda44b3d.js"></script>
+    <ul>
+        <li>Almost identical to singly linked lists but the Node class has an extra property of this.prev</li>
+    </ul>
+    <h4>Creating the .push(value) method - add a node to the end of the list</h4>
+    <script src="https://gist.github.com/mlycode/abcc027f5149821ad85571c86a4a7282.js"></script>
+    <ul>
+        <li>
+            first conditional defined for when the list is empty
+        </li>
+        <li>else, the old tail has its .next assigned as the new node, and the new node has its .prev set to the old tail, finally the tail is reassigned as the new node</li>
+        <li>List length is incremented adn the list is returned</li>
+    </ul>
+    <h4>Creating the .pop() method - removing a node form the end of the list</h4>
+    <script src="https://gist.github.com/mlycode/0438f019d25a037ce1f4562d6bb4539c.js"></script>
+    <ul>
+        <li>Removes the old tail's .prev connection and the previous node from the tail (new tail) .next connection also removed</li>
+    </ul>
+    <h4>Creating the .shift() method - remove a node from the start of the list</h4>
+    <script src="https://gist.github.com/mlycode/6a5d8c9e234b64ba22180608c15b0dba.js"></script>
+    <ul>
+        <li>For empty list, return undifined</li>
+        <li>For 1 node list, sets the head and tail to null</li>
+        <li>else the connections are set to null to remove the head form the list, reassigning the .next of the old head as the new head</li>
+    </ul>
+    <h4>Creating the .unshift(value) method - insert a new node at the start of the list</h4>
+    <script src="https://gist.github.com/mlycode/87d4759eb29cff9afa3b2fa64d8dc933.js"></script>
+    <ul>
+        <li>creates newNode variable</li>
+        <li>sets the current head's .prev property to point to the newNode</li>
+        <li>newNode's .next points to this.head, then the head is reassigned to the newNode</li>
+    </ul>
+    <h4>Creating the .get(index) method - get the value from a specified index</h4>
+    <script src="https://gist.github.com/mlycode/628a02a66337cbc81728886b94a738ef.js"></script>
+    <ul>
+        <li>Conditional that checks if the index of the value to be found is greater than or less than the midpoint of this.length</li>
+        <li>Conditional used to decide if the pass through the array should start from the head or the tail (whichever is shortest) making the get method more efficient compared to a singly linked list</li>
+    </ul>
+    <h4>Creating the .set(index, value) method - replace the value of a specified node</h4>
+    <script src="https://gist.github.com/mlycode/ad5557e8e786d9b119033640813d08f1.js"></script>
+    <ul>
+        <li>uses the get() method to find the node to change</li>
+    </ul>
+    <h4>Creating the .insert(index, value) method - add a node at a specified index</h4>
+    <script src="https://gist.github.com/mlycode/9034a6fe18cd4d718b2dac20f75e30ab.js"></script>
+    <ul>
+        <li>Uses the get method to find the node before the insert index and then connects the .next and .prev properties for the nodes before and after</li>
+        <li>conditionals use push and unshift methods to insert at the start or end of the list</li>
+    </ul>
+    <h4>Creating the remove(index) method - remove a node from a specified index</h4>
+    <script src="https://gist.github.com/mlycode/8e755f9b3ebe8f16ef537c044457b500.js"></script>
+    <ul>
+        <li>uses the get method to find the node to be removed</li>
+        <li>the nodes previous and next have their .next and .prev properties changed and the removed node's properties of next and prev are set to null</li>
+    </ul>
+    <h3>Big O time complexity</h3>
+    <ul>
+        <li>Insertion is O(1) - same as singly linked lists</li>
+        <li>Removal is O(1) - is always constant unlike singly linked lists (worst case when removing from the end of the list which is O(n))</li>
+        <li>Searching is O(n) - same as singly linked lists but technically half of singly linked lists (just simplifies to O(n))</li>
+        <li>Access - O(n)</li>
+    </ul>
+</body>
+</html>
