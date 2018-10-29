@@ -1,1 +1,1 @@
-# JS-Problem-solving
+# JS Searching Algorithms and Data Structures
