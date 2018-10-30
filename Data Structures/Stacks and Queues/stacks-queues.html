@@ -1,0 +1,65 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stacks and Queues</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="stacks-queues.js"></script>
+</head>
+<body>
+    <h1>Stacks and Queues</h1>
+    <h2>Stacks</h2>
+    <h3>Overview</h3>
+    <ul>
+        <li>It is a <strong>LIFO</strong> data structure (last in first out)</li>
+        <li>In a Stack, the last element added will be the first element removed from the stack</li>
+        <li>Used for managing function invocations (call stack)</li>
+        <li>Used for undo / redo and routing (history)</li>
+    </ul>
+    <h3>Code</h3>
+    <p>There is more than one way to implement a stack</p>
+    <h4>Using an Array to create a Stack</h4>
+    <ul>
+        <li>An array using .push() to add onto the end of the array and .pop() to remove the end of the array satisfies LIFO</li>
+        <li>.shift() and .unshift() can also do this, but remember adding and removing from the start of an array has O(n) time complexity due to requirement of re-indexing the array elements</li>
+        <li>An array has many methods and indices which aren't needed for a stack</li>
+    </ul>
+    <h4>Creating a Stack using a Singly Linked list</h4>
+    <script src="https://gist.github.com/mlycode/7bcd6dacb78402f4f0e6ac0a2e3b2190.js"></script>
+    <ul>
+        <li>Stack class only needs two methods to add and remove the last item in the list</li>
+        <li>push and pop remove and add from the start of the list/stack (because actual push and pop are not constant time for a singly linked list)</li>
+    </ul>
+    <h3>Big O of Stacks</h3>
+    <ul>
+        <li>Insertion, O(1) - ensured that the push method was O(1)</li>
+        <li>Removal, O(1)</li>
+        <li>Searching and Access, O(n) - nature of linked lists, could be slightly improved with doubly linked lists but this isn't important for stacks</li>
+    </ul>
+
+    <h2>Queues</h2>
+    <h3>Overview</h3>
+    <ul>
+        <li>It has <strong>FIFO</strong> data structure (first in first out)</li>
+        <li>Used for background tasks, uploading resources, printing queues</li>
+    </ul>
+    <h3>Code</h3>
+    <h4>Creating a Queue using an Array</h4>
+    <ul>
+        <li>use .shift() to remove from the start of the queue (of course requires re-indexing O(n)) and .push() to add to the end of the queue</li>
+        <li>Instead could use .unshift() to add to the 'end' of the queue and .pop() to remove from the start of the queue but just switches the case where re-indexing is required</li>
+    </ul>
+    <h4>Creating a Queue using a List</h4>
+    <script src="https://gist.github.com/mlycode/02e7ab25a7fcc14c2fe6040b155d44cb.js"></script>
+    <ul>
+        <li>Adding to the end of the list(enqueue) and removing(dequeue) from the start</li>
+        <li>Do this to ensure constant time complexity O(1)</li>
+    </ul>
+    <h3>Big O of Queues</h3>
+    <ul>
+        <li>Insertion and Removal, O(1)</li>
+        <li>Searching and Access, O(n)</li>
+    </ul>
+</body>
+</html>
