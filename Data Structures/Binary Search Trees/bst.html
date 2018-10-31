@@ -1,0 +1,68 @@
+<!COCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Binary Search Trees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="bst.js"></script>
+</head>
+<body>
+    <h1>Binary Search Trees</h1>
+    <h3>Overview</h3>
+    <img style="width: 40%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/1200px-Binary_tree.svg.png"/>
+    <ul>
+        <li>A Tree is a data structure that consists of nodes in a <strong>parent/child</strong> relationship</li>
+        <li>Trees are non-linear, there are multiple paths</li>
+        <li>A node can only point to a child element (move down from a single root node, not across)</li>
+    </ul>
+    <h4>Terminology</h4>
+    <ul>
+        <li>Root - the top node in a tree</li>
+        <li>child - a node directly connected to another node when moving away from the root</li>
+        <li>Parent - converse notion of a child</li>
+        <li>Siblings - a group of nodes with the same parent</li>
+        <li>Leaf - node with no children</li>
+        <li>Edge - the connection between one node to another</li>
+    </ul>
+    <h4>Uses for Trees</h4>
+    <ul>
+        <li>HTML DOM; elements and nested elements (children)</li>
+        <li>Network routing - finding shortest routes</li>
+        <li>AI</li>
+        <li>Folder structure</li>
+        <li>JSON</li>
+    </ul>
+    <h4>Types of Trees (Many)</h4>
+    <ul>
+        <li>Trees</li>
+        <li>Binary Trees</li>
+        <li>Binary Search Trees - excel at searching; each node can only have two children and are sorted (store comparable data)</li>
+        <ul>
+            <li>child nodes to the left of a parent are less than the parent</li>
+            <li>Makes inserting and searching quicker compared to unsorted trees</li>
+        </ul>
+    </ul>
+    <h3>Code</h3>
+    <h4>Creating the classes</h4>
+    <script src="https://gist.github.com/mlycode/dbbc550ca5e721c9831d4644e32f1379.js"></script>
+    <h4>Creating the insert() method - insert a node in the correct position (depending on value)</h4>
+    <script src="https://gist.github.com/mlycode/dd42c3493ec8fc7b241fda9f9eb49ab0.js"></script>
+    <ul>
+        <li>Creating a new node, newNode variable. Checking first if a root exists</li>
+        <li>if it does exist, while true (breaking only for a return statement) if greater than the current parent node, move to the right and check again</li>
+        <li>only return when a left or right child node does not exist, then set it to newNode</li>
+    </ul>
+    <h4>Creating the find(value) method - search if a value exists within a tree</h4>
+    <script src="https://gist.github.com/mlycode/664c9ccd9e80e74e077231433043f59c.js"></script>
+    <ul>
+        <li>While there is a current value (not equal to null) and the found variable is false, conditionals run</li>
+        <li>if nothing is found (current is false) then false is returned, else something was found and true is returned</li>
+    </ul>
+    <h3>Big O of BST</h3>
+    <ul>
+        <li>Insertion, O(logn) - Doubling the number of nodes only increases the number of node levels by 1 (increases the number of steps by one)</li>
+        <li>Searching, O(logn) - However, every child could be on one side leading to O(n) </li>
+    </ul>
+</body>
+</html>
