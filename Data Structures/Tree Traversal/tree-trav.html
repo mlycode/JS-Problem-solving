@@ -1,0 +1,63 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tree Traversal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="tree-trav.js"></script>
+</head>
+<body>
+    <h1>Tree Traversal</h1>
+    <h3>Overview</h3>
+    <ul>
+        <li>How do we search through an entire tree (regardless of type or sorting) </li>
+        <li>Two main ways, breadth first and depth first</li>
+        <li>Breadth first works across the tree, depth first search moves down the tree instead</li>
+    </ul>
+    <h3>Breadth First Search - searching sibling nodes</h3>
+    <script src="https://gist.github.com/mlycode/59eee88d7d8dee266c5e7fb3001a52fe.js"></script>
+    <ul>
+        <li>create a queue and a variable to store the values of nodes visited</li>
+        <li>add the root to the node in the queue</li>
+        <li>loop whilst there is something in the queue</li>
+        <li>dequeue a node form the queue and push its value to a variable that stores the nodes</li>
+        <li>if there is a left property on this node, it is added to the queue, likewise for right property</li>
+        <li>Returns the variables at the end of the loop/when queue empty</li>
+    </ul>
+    <h3>Depth First Search</h3>
+    <h4>DFS PreOrder</h4>
+    <p>Consider one side at a time, left first then right - adding the parent then the children (root first)</p>
+    <script src="https://gist.github.com/mlycode/0ff46460f6070becb916c01be0c73cdc.js"></script>
+    <ul>
+        <li>Create a variable to store the values of nodes visited</li>
+        <li>store the root of the tree in a variable, current</li>
+        <li>use a helper function (recursive code) which accepts a node as an argument</li>
+        <ul>
+            <li>push the value of the node to the variable that stores the values</li>
+            <li>if this node has a left property, call the helper function with this as the argument</li>
+            <li>likewise for the right</li>
+        </ul>
+        <li>helper function invoked with the current variable</li>
+        <li>returns array of values</li>
+    </ul>
+    <h4>DFS PostOrder</h4>
+    <p>Traverses the entire branch before visiting a node - adding the parent's children first (root last)</p>
+    <script src="https://gist.github.com/mlycode/ef58c2caed423ab00276f26b002e28af.js"></script>
+    <h4>DFS InOrder</h4>
+    <p>Traverses entire left (until leaf), visits that node, goes back to parent to check the right and traverses right until leaf, then vists node etc.</p>
+    <script src="https://gist.github.com/mlycode/26e7755eebfe42678d4dc09dfa6a77ff.js"></script>
+    <h3>When to use BFS and DFS</h3>
+    <h4>Breadth or Depth</h4>
+    <ul>
+        <li>Using breadth first on a very wide tree, we are storing the nodes to be visited. Depth first stores less nodes. time complexity is the same</li>
+        <li>For a deep tree (i.e. list) there is only one item in the queue for Breadth first, depth first will have more (call stacks on one side) - time complexity is still the same, every node is visited once</li>
+        <li>It depends on the layout of the tree</li>
+    </ul>
+    <h4>DFS</h4>
+    <ul>
+        <li>InOrder - usually used with binary search trees (get the nodes in their underlying order)</li>
+        <li>PreOrder - can be used to export a tree structure so it can be reconstructed or copied; root of the tree and children are identifiable</li>
+    </ul>
+</body>
+</html>
