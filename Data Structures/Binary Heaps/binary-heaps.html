@@ -1,0 +1,69 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Binary Heaps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="binary-heaps.js"></script>
+</head>
+<body>
+    <h1>Binary Heaps</h1>
+    <h3>Overview</h3>
+    <p>Often used to implement Priority Queues and with Graph Traversal algorithms</p>
+    <h4>What is a Binary Heap?</h4>
+    <ul>
+        <li>Similar to a binary tree, with different rules</li>
+        <li>MaxBinaryHeap, parent nodes are always larger than child nodes</li>
+        <li>MinBinaryHeap, parent nodes are always smaller than child nodes</li>
+    </ul>
+    <h4>Max Binary Heap</h4>
+    <ul>
+        <li>Each parent has at most two child nodes</li>
+        <li>value of each parent node is <strong>always</strong> greater than its child nodes</li>
+        <li>There are no guarantees between sibling nodes - regardless of node value, childs can be placed so long as they are smaller than the parent node</li>
+        <li>A binary heap is as compact as possible. all the children of each node are as full as they can be - left children are filled out first (can't be one sided and behave like a list)</li>
+    </ul>
+    <h4>Representing Data in a heap</h4>
+    <ul>
+        <li>can use an array, where n is the index</li>
+        <li>the left child of a parent node (at index n) is at index 2n + 1 and the right is at 2n + 2</li>
+        <li>To find child node's parent, Math.floor(n-1/2) where n is the index of the child in the array</li>
+    </ul>
+    <h3>Code</h3>
+    <h4>Defining the Heap Class</h4>
+    <p>We are using an array to model the binary heap, by changing the index of values in the array we are assigning parent child connections</p>
+    <h4>Creating the insert(value) method - add a node to the tree</h4>
+    <script src="https://gist.github.com/mlycode/d81a73aa8fb93396c321b93ee791fcdd.js"></script>
+    <ul>
+        <li>Adding the value to the end of the array (push method), however it is likely not in the correct position</li>
+        <li>the new node needs to bubble up to its correct position i.e. push on the larger value, needs to bubble to the top as the root node</li>
+        <ul>
+            <li>comparing the child node to the parent</li>
+            <li>if the child is larger, we swap the nodes positions (position in the array)</li>
+            <li>repeated until the condition of child nodes being smaller than the parent node</li>
+        </ul>
+    </ul>
+    <h4>Creating the extractMax() method - Removing the root (max value) from the head</h4>
+    <ul>
+        <li>remove the root and replace it with the most recently added (last in the array)</li>
+        <li>then adjust the heap - bubble down that node to the correct position</li>
+    </ul>
+    <script src="https://gist.github.com/mlycode/6821981d9a14ac7993cca00bbfe1c3e7.js"></script>
+    <ul>
+        <li>Swap the first value with the last one in values property</li>
+        <li>pop() the values property, and return the value at the end</li>
+        <li>Bubble down the new root to the correct spot</li>
+        <ul>
+            <li>parent index starts at 0, the root</li>
+            <li>find the index of the left and right childs, ensure not out of bounds</li>
+            <li>swap the parent with the larger of the two childs if the parent is smaller</li>
+            <li>swaped index now becomes the parent's new index</li>
+            <li>loops until neither child is larger</li>
+            <li>return old root</li>
+        </ul>
+    </ul>
+    <h3>Priority Queue</h3>
+    
+</body>
+</html>
