@@ -1,0 +1,106 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hash Tables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="hash-tables.js"></script>
+</head>
+<body>
+    <h1>Hash Tables</h1>
+    <h3>Overview</h3>
+    <h4>What is a hash table?</h4>
+    <ul>
+        <li>Used to store key-value pairs</li>
+        <li>Keys in a hash table are not ordered (unlike arrays)</li>
+        <li>Unlike arrays, fast for finding values, adding new values and removing values</li>
+        <li>JS has objects and maps</li>
+        <li>Ideal for when key-value pairs are required i.e. color[red] where value of red is a hexidecimal (hard to understand) value</li>
+    </ul>
+    <h3>Using an array to implement a hash table</h3>
+    <ul>
+        <li>To look up values by key, need a way to convert keys into valid array indices</li>
+        <li>A function that performs this task is called a hash function</li>
+    </ul>
+    <h4>Intro to Hash functions</h4>
+    <ul>
+        <li>Takes an input of any size and maps an output of fixed size</li>
+        <li>A good hash function:</li>
+        <ul>
+            <li>Is fast (constant time)</li>
+            <li>Doesn't cluster outputs at specific indices, but distributes uniformly</li>
+            <li>Deterministic; the same input always yields the output</li>
+        </ul>
+    </ul>
+    <h4>Example of Hash function</h4>
+    <script src="https://gist.github.com/mlycode/51b0580e96c0afecbf2cfa1fde5001cd.js"></script>
+    <ul>
+        <li>The .charCodeAt(stringIndex) method returns the assigned numerical value for a character (-96 returns 1 for a, 2 for b etc.)</li>
+        <li>By moding the total by the array length, ensure the assigned index is valid for the array size</li>
+        <li>Issues with this hash function</li>
+        <ul>
+            <li>Only hashes strings</li>
+            <li>Not constant time, O(n) with key length / the loop</li>
+            <li>Could be more random (likely to cluster)</li>
+        </ul>
+    </ul>
+    <h4>Improving the Hash function</h4>
+    <script src="https://gist.github.com/mlycode/996b7533808ce4102a7149c83819a0c9.js"></script>
+    <ul>
+        <li>Use Math.min to limit the loop to 100, try to reduce the impact of a very long string</li>
+        <li>Multiplying the total by a prime number and ideally have the array length be a prime number too</li>
+        <li>Due to underlying mathematics, by using prime numbers, the key values are less clustered and have less collisions (value has the same key as another value)</li>
+    </ul>
+    <h4>Handling Collisions</h4>
+    <ul>
+        <li>Collisions are inevitable</li>
+        <li>Considering only two stratergies; Separate Chaining and Linear Probing</li>
+    </ul>
+    <p>With separate chaining, at each index in the array, we store values using more sophisticated data structures like an array or a linked list. Allows ability to store multiple key-value pairs at the same index</p>
+    <p>With linear probing, we search through the array to find the next empty slot (when there is a collision). Limited by the length of the table, unless something else is done...</p>
+    <h4>Creating the HashTable class</h4>
+    <script src="https://gist.github.com/mlycode/cee3662e20f40142e4b05be30795abda.js"></script>
+    <ul>
+        <li>If array size is not defined, a default of 52 is used</li>
+    </ul>
+    <h4>Creating the Set(key, value)</h4>
+    <ul>
+        <li>Accepts a key and a value</li>
+        <li>Hashes the key</li>
+        <li>Stores the key-value pair in the hash table via separate chaining</li>
+    </ul>
+    <script src="https://gist.github.com/mlycode/fd10e17d632674be8cb2b4ad8d81c15a.js"></script>
+    <ul>
+        <li>If there is nothing at index, inserting an empty array</li>
+        <li>Then pushing the new key-value pair into that array</li>
+    </ul>
+    <h4>Creating the get(key) method</h4>
+    <ul>
+        <li>Accepts a key</li>
+        <li>Hashes the key (to get an index)</li>
+        <li>Looks for and returns the corresponding value</li>
+        <li>Need to find the correct key-value pair for separate chaining</li>
+    </ul>
+    <script src="https://gist.github.com/mlycode/9b18e589598602350be9d1c675d8de73.js"></script>
+    <ul>
+        <li>Conditional checks if there is something at keyMap[index]</li>
+        <li>if there is, then loop over that nested array at keyMap[index]</li>
+        <li>Checking if the keys match, the key is stored at 0th index in that nested array keyMap[index][i][0]</li>
+    </ul>
+    <h4>Creating the keys and values method</h4>
+    <ul>
+        <li>Keys loops through the hash table array and returns an array of keys in the table</li>
+        <li>Values loops through the hash table array and returns an array of values in the table</li>
+    </ul>
+    <script src="https://gist.github.com/mlycode/ed2db09519fdeb3046ae127a1b1eb8b6.js"></script>
+    <ul>
+        <li>Looping through the table, and then a nested loop looping through nested arrays</li>
+        <li>For returning values, conditional ensures only unique values are returned</li>
+    </ul>
+    <h3>Big O of hash tables</h3>
+    <ul>
+        <li>Average case: Insert, Delete and access are O(1) constant time - Depends on the hash function and how evenly it distributes elements (minimise collisions)</li>
+    </ul>
+</body>
+</html>
