@@ -64,6 +64,31 @@
         </ul>
     </ul>
     <h3>Priority Queue</h3>
-    
+    <h4>What is a Priority Queue</h4>
+    <ul>
+        <li>A data structure where each element has a priority associated to it</li>
+        <li>Elements with higher priorities are served before elements with lower priorities</li>
+        <li>When using the binary heap, the root element is what is of interest, always remove the root first</li>
+    </ul>
+    <h4>Creating a Priority Queue using a binary heap</h4>
+    <p>Heap consists of nodes with priority and a value. We are comparing priority of the nodes when constructing the heap (value is not of importance). The rule for this queue is a lower priority value has higher priority in the queue - implementing a MinBinaryHeap</p>
+    <ul>
+        <li>Two classes; PriorityQueue (values array property) and Node (properties of val and priority)</li>
+        <li>Using a min binary heap</li>
+        <li>using the priority to build the heap</li>
+        <li>Enqueue method accepts a value and priority, makes a new node and puts it in the right spot</li>
+        <li>Dequeue method removes root element, returns it and rearranges heap using priority</li>
+    </ul>
+    <script src="https://gist.github.com/mlycode/6476efd46bda8ed3b3f18293fcdcb723.js"></script>
+    <ul>
+        <li>Adjusting code from before</li>
+        <li>Previous code was a max binary queue, this priority queue uses a min binary queue, therefore some conditionals were changed</li>
+        <li>Also comparing the elements.priority instead of value, hence some more changes to code. Else, everything is the same</li>
+    </ul>
+    <h3>Big O of Binary Heaps</h3>
+    <ul>
+        <li>Insertion and Removal, O(logn) - Not possible to have one sided trees, they are filled in order starting from the left (each row filled before starting the next)</li>
+        <li>Search, O(n) - Unlike binary search tree, no strict order between nodes</li>
+    </ul>
 </body>
 </html>
