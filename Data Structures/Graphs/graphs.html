@@ -1,0 +1,93 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Graphs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="graphs.js"></script>
+</head>
+<body>
+    <h1>Graphs</h1>
+    <h3>Overview</h3>
+    <h4>Intro</h4>
+    <ul>
+        <li>Graph data structures consist of finite (possibly mutable) set of vertices/nodes/points</li>
+        <li>These can be together with a set of unordered pairs of these vertices for an undirected graph, or a set of ordered pairs for a directed graph</li>
+        <li>A graph is a collection of nodes and connections</li>
+    </ul>
+    <h4>Uses for Graphs</h4>
+    <ul>
+        <li>Social Networks - Friend networks</li>
+        <li>Location / Mapping</li>
+        <li>Routing Algorithms</li>
+        <li>Visual Hierarchy</li>
+        <li>File system optimisations</li>
+        <li>Recommendations - "People also bought ... with this"</li>
+    </ul>
+    <h4>Types of Graphs</h4>
+    <p>Terminology</p>
+    <ul>
+        <li>Vertex - a node</li>
+        <li>Edge - a connection between nodes</li>
+        <li>Weighted/Unweighted - values assigned to distances between vertices</li>
+        <ul>
+            <li>unweighted have no value assigned to edges, weighted does</li>
+        </ul>
+        <li>Directed/Undirected - directions assigned to distance between vertices</li>
+        <ul>
+            <li>Undirected graph has no defined direction between vertices, two-way connections</li>
+        </ul>
+    </ul>
+    <h3>Representing a Graph</h3>
+    <p>Two methods; Adjacency matrix or an adjacency list. A matrix uses a table showing 0 or 1 to represent edges bewteen vertices. A list uses a list/array, each vertex represented by an index, connections are stored in another array i.e. vertex 3 has connections [1,2,5]. Could also use a hash table to store key-value pairs (not limited to numerical values)</p>
+    <img src="Capture.PNG" style="width: 40%">
+    <ul>
+        <li>adjacency list</li>
+        <ul>
+            <li>Can take up less space (in sparce graphs low in connections)</li>
+            <li>Faster to iterate over all edges</li>
+            <li>can be slower to lookup specific edge</li>
+        </ul>
+        <li>Adjacency Matrix</li>
+        <ul>
+            <li>Takes up mroe space (in sparse graphs)</li>
+            <li>Slower to iterate over all edges</li>
+            <li>Faster to lookup specific edge</li>
+        </ul>
+    </ul>
+    <h3>Creating a graph using an Adjacency List</h3>
+    <h4>Defining the Class</h4>
+    <script src="https://gist.github.com/mlycode/bcd9a88e3506fa54e170b4881875db0d.js"></script>
+    <h4>Creating the addVertex(vertex) method</h4>
+    <script src="https://gist.github.com/mlycode/3e96788628b2e043a3515ce4f03279a1.js"></script>
+    <ul>
+        <li>Accepts a name of a vertex</li>
+        <li>adds a key to the adjacency list with the name, settings the value to be an empty array</li>
+    </ul>
+    <h4>Creating the addEdge(vertex1, vertex 2) method - adding connections</h4>
+    <script src="https://gist.github.com/mlycode/8b31f07a24547107bb8acf475495941d.js"></script>
+    <ul>
+        <li>Accepts two vertices v1 and v2</li>
+        <li>finds the key in adjacency list of v1 and pushes v2 into the array</li>
+        <li>also finds key of v2 in adjacency list and pushes into v1</li>
+        <li>To create a directed graph, would only add edge in one and not both directions</li>
+    </ul>
+    <h4>Creating the removeEdge(v1, v2) method</h4>
+    <script src="https://gist.github.com/mlycode/8a285f93310eedec19363584511d0e8f.js"></script>
+    <ul>
+        <li>accepts two vertices</li>
+        <li>reassigns key of v1 to not contain v2</li>
+        <li>likewise for v2</li>
+        <li>filter method only keeps items in the array based on the conditional stated</li>
+    </ul>
+    <h4>Creating the removeVertex(vertex) method</h4>
+    <script src="https://gist.github.com/mlycode/ce7ce6f375b8ad97b42172d575b90a40.js"></script>
+    <ul>
+        <li>Accepts a vertex to remove</li>
+        <li>loops as long as there are any other vertices in the adjacency list for that vertex</li>
+        <li>uses the removeEdge function</li>
+        <li>Deletes the key in the adjacency list</li>
+    </ul>
+</body>
+</html>
