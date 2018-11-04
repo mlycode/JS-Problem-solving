@@ -24,10 +24,76 @@ class Graph {
         }
         delete this.adjacencyList[vertex];
     }
+    DFTRecursive(vertex) {
+        let results = [];
+        let visited = {};
+        const adjacencyList = this.adjacencyList;
+        traverse(vertex);
+        function traverse(vertex) {
+            if (!vertex) return;
+            visited[vertex] = true;
+            results.push(vertex);
+            adjacencyList[vertex].forEach(neighbour => {
+                if (!visited[neighbour]) return traverse(neighbour);
+            });
+        };
+        return results;
+    }
+    DFTIterative(vertex) {
+        let results = [];
+        let visited = {};
+        let stack = [vertex];
+        let currentVertex;
+
+        visited[vertex] = true;
+        while (stack.length) {
+            currentVertex = stack.pop();
+            results.push(currentVertex);
+
+            this.adjacencyList[currentVertex].forEach(neighbour => {
+                if (!visited[neighbour]) {
+                    visited[neighbour] = true;
+                    stack.push(neighbour)
+                }
+            });
+        }
+        return results;
+    }
+    BFT(vertex) {
+        let queue = [vertex];
+        let visited = {};
+        let results = [];
+        let currentVertex;
+
+        visited[vertex] = true;
+        while (queue.length) {
+            currentVertex = queue.shift();
+            results.push(currentVertex);
+
+            this.adjacencyList[currentVertex].forEach(neighbour => {
+                if (!visited[neighbour]) {
+                    visited[neighbour] = true;
+                    queue.push(neighbour);
+                }
+            });
+        };
+        return results;
+    }
 }
 
 let g = new Graph();
-g.addVertex("Tokyo");
-g.addVertex("London");
-g.addVertex("Paris");
-g.addVertex("New York");
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
+
+
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B","D")
+g.addEdge("C","E")
+g.addEdge("D","E")
+g.addEdge("D","F")
+g.addEdge("E","F")

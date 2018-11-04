@@ -89,5 +89,60 @@
         <li>uses the removeEdge function</li>
         <li>Deletes the key in the adjacency list</li>
     </ul>
+    <h1>Graph Traversal</h1>
+    <h3>Intro</h3>
+    <h4>Graph Traversal Uses</h4>
+    <ul>
+        <li>Peer to peer networking</li>
+        <li>Web crawlers - following links on a webpage</li>
+        <li>Finding closest matches / recommendations</li>
+        <li>Shortest path problems; GPS, solving mazes...</li>
+    </ul>
+    <img src="c2.PNG" style="width: 250px">
+    <h3>Depth First Traversal</h3>
+    <p>Explore as far down as possible one branch before backtracking. Depth first searching means visiting the starting vertex's neighbours, it explores and continues down the path before searching the other neighbour vertex</p>
+    <h4>DF Traversal - Recursive code DFSRecursive(vertex)</h4>
+    <script src="https://gist.github.com/mlycode/6c36210341dd459d57105f14c1353880.js"></script>
+    <ul>
+        <li>Function accepts a starting vertex</li>
+        <li>visited vertex are stored in an array to return at the end</li>
+        <li>an object is created to keep track of and store the visited vertices</li>
+        <li>created a helper funciton to accept a vertex</li>
+        <ul>
+            <li>the function returns early if the vertex is empty</li>
+            <li>places the vertex it accepts into the visited object and pushes the vertex into the results array</li>
+            <li>loops over all the values in the adjacencyList for that vertex (array of edges)</li>
+            <li>if these values have not been visited, helper function recursively invoked with that vertex</li>
+        </ul>
+        <li>helper function invoked with the starting vertex</li>
+    </ul>
+    <h4>Iterative code</h4>
+    <script src="https://gist.github.com/mlycode/e436dfc60396f25c8b81867f246c1aff.js"></script>
+    <ul>
+        <li>function accepts a starting vertex</li>
+        <li>stack used to keep track of vertices (array)</li>
+        <li>end results stored in an array, returned at the end</li>
+        <li>visited vertex stored in an object</li>
+        <li>add starting vertex to start and mark as visited</li>
+        <li>while stack is not empty</li>
+        <ul>
+            <li>pop next vertex from stack</li>
+            <li>if that vertex hasn't been visited, mark as visited, add to results list and push its neighbours to the stack</li>
+        </ul>
+    </ul>
+    <h3>Breadth First traversal</h3>
+    <p>Visit neighbours of current vertex first. When considering the adjacent list, not following the edges along, but completing the connections at each vertex first</p>
+    <h4>creating the BFT(vertex) method</h4>
+    <script src="https://gist.github.com/mlycode/e7e7d7917c4c0a036d5ca76ea4ad4605.js"></script>
+    <ul>
+        <li>function accepts a starting vertex</li>
+        <li>a queue (array) starting with the vertex</li>
+        <li>results array stores the visited vertex</li>
+        <li>object stores if the vertex has been visited</li>
+        <li>loop while there is something in the queue</li>
+        <li>remove the first vertex from the queue and push it into the results array</li>
+        <li>loop over each vertex in adjacency list for the vertex visiting</li>
+        <li>if not inside the visited object, marked as visited and enqueue that vertex (shift())</li>
+    </ul>
 </body>
 </html>
