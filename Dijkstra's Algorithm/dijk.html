@@ -1,0 +1,68 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dijkstra's Algorithm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="dijk.js"></script>
+</head>
+<body>
+    <h1>Dijkstra's Algorithm</h1>
+    <h3>Overview</h3>
+    <h4>What is Dijkstra's Algorithm?</h4>
+    <ul>
+        <li>Finds the shortest path between two vertices on a graph</li>
+        <li>Uses a weighted graph and priority queues (binary heaps)</li>
+    </ul>
+    <h4>Why is it useful</h4>
+    <ul>
+        <li>GPS - finding the fastest route</li>
+        <li>network routing - finds shortest open path for data</li>
+        <li>Biology - used to model spread of viruses</li>
+        <li>Airline tickets - finding cheapest route to destination</li>
+    </ul>
+    <h3>Implementing a weighted graph</h3>
+    <p>In the adjacencyList i.e. from vertex A: [B, C, D etc.] instead for the weighted graph, need to also store values -> A: [{node: B, weight: 10}, etc.]</p>
+    <h4>Class code and addEdge and addVertex method</h4>
+    <script src="https://gist.github.com/mlycode/07d5471062652414ee9e244498af32cb.js"></script>
+    <h3>The Approach</h3>
+    <ol>
+        <li>Everytime a new node is visited, we pick the node with the smallest known distance from the first</li>
+        <li>Once moved to that node, we look at each of its neighbours</li>
+        <li>For each neighbouring node, we calculate the distance by summing the total edges that lead to the node we're checking from the starting node</li>
+        <li>If the new total distance to a node is less than the previous total, we store the new shorter distance for that node</li>
+    </ol>
+    <p>Keep track of visited nodes in an array, and keep track of how the shortest distance to a node was reached from the starting node by storing which previous node was used to reach that node.</p>
+    <h4>Creating the simple (using array and built in methods) to implement a priority queue</h4>
+    <script src="https://gist.github.com/mlycode/34cf653630951a5514cf4e1f4b3df00a.js"></script>
+    <ul>
+        <li>This has O(nlogn) time complexity due to using the built in sorting method</li>
+        <li>Better to use a binary heap to create a priority queue</li>
+        <li>returning the smallest value/priority with dequeue()</li>
+    </ul>
+    <h4>Dijkstra's algorithm pseudocode</h4>
+    <ul>
+        <li>Function accepts a starting and ending vertex</li>
+        <li>create an object (called distances) and initially sets each key to be every vertex in the graph with a value of infinity, except the starting vertex, which has value (distance from starting vertex) of 0</li>
+        <li>after setting the values in the distance object, add each vertex with a priority of infinity to the priority queue, except the starting vertex, which has priority 0 (it is where we begin)</li>
+        <li>create another object called previous and set each key to be every vertex in the adjacencyList, starting value of null for all</li>
+        <li>start looping as long as there is something in the priority queue</li>
+        <ul>
+            <li>dequeue a vertex from the priority queue</li>
+            <li>if that vertex is === ending vertex, return (done)</li>
+            <li>else, loop through each value in the adjacency list at that vertex</li>
+            <ul>
+                <li>calculate the distance to that vertex from the starting vertex</li>
+                <li>if the distance is less than what is currently stored in the distances object</li>
+                <ul>
+                    <li>update the distances object with a new lower distance</li>
+                    <li>update the previous object to contain that vertex</li>
+                    <li>enqueue the vertex with the total distance from the start node</li>
+                </ul>
+            </ul>
+        </ul>
+    </ul>
+    <script src="https://gist.github.com/mlycode/3413c91e81b0db30c75156a0fa32ba22.js"></script>
+</body>
+</html>
